@@ -4,6 +4,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
+@theme {
+  --font-playfair: var(--font-playfair);
+  --font-nunito: var(--font-nunito);
+
+  --color-burgundy: #6B0F2B;
+  --color-gold: #C9A84C;
+  --color-muted: #9A6070;
+  --color-cream: #FDF6F0;
+}
+
 :root {
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
