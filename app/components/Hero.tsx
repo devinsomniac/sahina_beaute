@@ -39,8 +39,8 @@ const Hero = () => {
                         <Image
                             src={"/logo/logo.png"}
                             alt='Logo'
-                            height={400}
-                            width={400}
+                            height={500}
+                            width={500}
                             className='object-contain'
                         />
                     </motion.div>
@@ -71,7 +71,7 @@ const Hero = () => {
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                 className='flex flex-col justify-center items-center'
             >
-                <div className="grid grid-cols-2 grid-rows-3 gap-3 mt-4 w-full max-w-[520px] h-[320px] sm:h-[380px] md:h-[460px] lg:h-[520px] p-3 md:p-0">
+                <div className="grid grid-cols-2 grid-rows-3 gap-3 mt-4 w-full max-w-[660px] h-[320px] sm:h-[380px] md:h-[550px] lg:h-[550px] p-3 md:p-0">
                     <div className="row-span-2 rounded-2xl overflow-hidden relative">
                         <Image src="/Images/eye.jpeg" alt="lashes" fill className="object-cover object-center" />
                     </div>
