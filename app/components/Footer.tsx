@@ -58,7 +58,7 @@ const Footer = () => {
         <div
           className={`${nunito.className} text-right text-sm leading-7 text-[#b78a95]`}
         >
-          <p>© 2025 Sahina Beauté. All rights reserved.</p>
+          <p>© 2026 Sahina Beauté. All rights reserved.</p>
 
           <p>8 Rue Dezobry · 93200 Saint-Denis ♥</p>
 
