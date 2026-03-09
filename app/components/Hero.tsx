@@ -45,7 +45,7 @@ const Hero = () => {
                         />
                     </motion.div>
 
-                    <p className={`${nunito.className} text-burgundy/90`}>
+                    <p className={`${nunito.className} text-burgundy/90 text-center`}>
                         our exclusive Indian beauty sanctuary in Saint-Denis. Expert care for hands,feet, face, hair, waxing, henna and much more — with or without appointment.
                     </p>
                 </div>
@@ -54,7 +54,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.5 }}
-                    className={`${nunito.className} flex flex-wrap gap-3 mt-6 text-burgundy/90`}
+                    className={`${nunito.className} md:w-[600px] flex flex-wrap gap-3 mt-6 text-burgundy/90 justify-center items-center`}
                 >
                     <span className="px-4 py-2 rounded-full bg-white/50 border border-[#C9A84C]/40 text-sm">💅 Nails</span>
                     <span className="px-4 py-2 rounded-full bg-white/50 border border-[#C9A84C]/40 text-sm">🌸 Waxing</span>
