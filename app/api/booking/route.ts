@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log("Incoming booking body:", body);
 
     const {
       firstName,
@@ -25,67 +27,80 @@ export async function POST(req: Request) {
       );
     }
 
-    const scriptUrl = process.env.GOOGLE_SCRIPT_URL;
-    console.log("GOOGLE_SCRIPT_URL:", scriptUrl);
-
-    if (!scriptUrl) {
+    if (!process.env.RESEND_API_KEY) {
       return NextResponse.json(
         {
           success: false,
-          message: "GOOGLE_SCRIPT_URL is missing.",
+          message: "RESEND_API_KEY is missing.",
         },
         { status: 500 }
       );
     }
 
-    const googleResponse = await fetch(scriptUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        phone,
-        email,
-        date,
-        service,
-        notes,
-      }),
+    if (!process.env.SALON_RECEIVER_EMAIL) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "SALON_RECEIVER_EMAIL is missing.",
+        },
+        { status: 500 }
+      );
+    }
+
+    const customerName = `${firstName} ${lastName}`.trim();
+
+    const ownerEmail = await resend.emails.send({
+      from: "Salon Booking <onboarding@resend.dev>",
+      to: process.env.SALON_RECEIVER_EMAIL,
+      subject: `New Booking Request from ${customerName}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+          <h2>New Booking Request</h2>
+          <p><strong>Name:</strong> ${customerName}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Date:</strong> ${date}</p>
+          <p><strong>Service:</strong> ${service}</p>
+          <p><strong>Notes:</strong> ${notes || "No notes provided"}</p>
+        </div>
+      `,
     });
 
-    const rawText = await googleResponse.text();
+    if (ownerEmail.error) {
+      console.error("Resend owner email error:", ownerEmail.error);
 
-    console.log("Google response status:", googleResponse.status);
-    console.log("Google response text:", rawText);
-
-    let parsed;
-    try {
-      parsed = JSON.parse(rawText);
-    } catch {
       return NextResponse.json(
         {
           success: false,
-          message: "Apps Script did not return valid JSON.",
-          rawResponse: rawText,
+          message: "Failed to send booking email.",
         },
         { status: 500 }
       );
     }
 
-    if (!googleResponse.ok || !parsed.success) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: parsed.message || "Failed to save booking in Google Sheets.",
-        },
-        { status: 500 }
-      );
+    const customerEmail = await resend.emails.send({
+      from: "Salon Booking <onboarding@resend.dev>",
+      to: email,
+      subject: "We received your booking request",
+      html: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+          <h2>Thank you for your booking request</h2>
+          <p>Hi ${customerName},</p>
+          <p>We have received your booking request.</p>
+          <p><strong>Requested date:</strong> ${date}</p>
+          <p><strong>Service:</strong> ${service}</p>
+          <p>We will contact you shortly to confirm your appointment.</p>
+        </div>
+      `,
+    });
+
+    if (customerEmail.error) {
+      console.error("Resend customer email error:", customerEmail.error);
     }
 
     return NextResponse.json({
       success: true,
-      message: "Booking saved successfully.",
+      message: "Booking submitted successfully.",
     });
   } catch (error) {
     console.error("Booking API error:", error);
@@ -93,7 +108,8 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         success: false,
-        message: error instanceof Error ? error.message : "Unknown server error",
+        message:
+          error instanceof Error ? error.message : "Unknown server error",
       },
       { status: 500 }
     );
