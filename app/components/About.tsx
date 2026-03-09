@@ -30,11 +30,11 @@ const About = () => {
   return (
     <section
       id="about"
-      className="bg-[#FDF6F0] px-6 py-16 md:px-10 lg:px-16 xl:px-20"
+      className="bg-[#FDF6F0] px-6 py-16 md:px-10 lg:px-16 xl:px-20 overflow-x-hidden"
     >
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <motion.div
-          initial={{ opacity: 0, x: -45 }}
+          initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.75, ease: "easeOut" }}
@@ -48,11 +48,12 @@ const About = () => {
               className="object-cover"
             />
 
-            <div className="absolute inset-0 flex items-end p-8">
+            <div className="absolute inset-0 flex items-end p-6 md:p-8">
               <p
-                className={`${playfair.className} max-w-md text-lg italic leading-8 text-white md:text-xl`}
+                className={`${playfair.className} max-w-md text-base italic leading-7 text-white md:text-xl md:leading-8`}
               >
-                “Every woman deserves to feel beautiful — with or without an appointment.”
+                “Every woman deserves to feel beautiful — with or without an
+                appointment.”
               </p>
             </div>
           </div>
@@ -62,20 +63,20 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="absolute -right-4 -top-4 flex h-28 w-28 flex-col items-center justify-center rounded-full bg-[#d9bb63] text-center shadow-xl md:h-32 md:w-32"
+            className="absolute right-2 top-2 md:-right-4 md:-top-4 flex h-24 w-24 md:h-32 md:w-32 flex-col items-center justify-center rounded-full bg-[#d9bb63] text-center shadow-xl"
           >
             <span
-              className={`${nunito.className} text-[10px] uppercase tracking-[0.22em] text-[#6B0F2B]/70`}
+              className={`${nunito.className} text-[9px] md:text-[10px] uppercase tracking-[0.22em] text-[#6B0F2B]/70`}
             >
               Open
             </span>
             <span
-              className={`${playfair.className} text-4xl leading-none text-[#6B0F2B]`}
+              className={`${playfair.className} text-3xl md:text-4xl leading-none text-[#6B0F2B]`}
             >
               7/7
             </span>
             <span
-              className={`${nunito.className} mt-1 text-[10px] uppercase tracking-[0.18em] text-[#6B0F2B]/70`}
+              className={`${nunito.className} mt-1 text-[9px] md:text-[10px] uppercase tracking-[0.18em] text-[#6B0F2B]/70`}
             >
               Every Day
             </span>
@@ -83,7 +84,7 @@ const About = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 45 }}
+          initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.75, ease: "easeOut" }}
