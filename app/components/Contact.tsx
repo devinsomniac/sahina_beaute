@@ -11,7 +11,7 @@ const contactItems = [
   {
     icon: "📞",
     label: "Phone",
-    value: ["09.56.94.01.69", "07.58.50.65.61"],
+    value: ["0956940169", "0758506561"],
   },
   {
     icon: "📱",
