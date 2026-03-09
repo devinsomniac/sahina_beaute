@@ -18,11 +18,11 @@ const Hero = () => {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className='flex flex-col justify-center items-start px-10 md:mx-36'
             >
-                <div className={`${nunito.className} border-2 mt-4 w-full  md:mt-0 border-[#C9A84C] bg-burgundy/20 tracking-widest uppercase font-extralight px-4 rounded-full text-burgundy/90 flex gap-2 items-center text-xs md:text-sm`}>
+                <div className={`${nunito.className} border-2 mt-4 py-1 w-full md:w-[300px] flex-col items-center md:flex-row  md:mt-0 border-[#C9A84C] bg-burgundy/20 tracking-widest uppercase font-extralight px-4 rounded-full text-burgundy/90 flex gap-2 items-center text-xs md:text-sm`}>
                     <IoHeartCircleSharp className='animate-ping' />
-                    INDIAN BEAUTY SALON
-                    <span className='font-bold text-2xl'>.</span>
-                    Salon réserve aux femmes
+                    <p className=' text-center'>INDIAN BEAUTY SALON <br></br>
+                    Salon réserve aux femmes</p>
+                    
                 </div>
 
                 <div className='mt-2'>
