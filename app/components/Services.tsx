@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import { playfair, nunito } from "@/app/font";
 import { Button } from "@/components/ui/button";
 import ServicesTicker from "./ServicesTicker";
+import { motion } from "framer-motion";
 
 const serviceCards = [
   {
@@ -53,13 +56,38 @@ const serviceCards = [
     price: "FROM €8",
   },
 ];
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 35 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: "easeOut" },
+  },
+};
+
 const Services = () => {
   return (
-    <section className="bg-[#FDF6F0]">
+    <section className="bg-[#FDF6F0]" id="services">
       <ServicesTicker />
 
       <div className="px-6 sm:px-8 md:px-10 lg:px-14 xl:px-20 py-14 md:py-20">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
+        >
           <div>
             <div
               className={`${nunito.className} flex items-center gap-3 uppercase tracking-[0.35em] text-[10px] sm:text-xs text-[#C9A84C]`}
@@ -76,18 +104,34 @@ const Services = () => {
             </h2>
           </div>
 
-          <Button className={`${nunito.className} h-12 sm:h-14 rounded-full bg-[#6B0F2B] px-8 sm:px-10 tracking-[0.18em] text-xs sm:text-sm uppercase shadow-lg hover:bg-[#8a1838] self-start lg:self-auto`}>
-            Full Price Menu ↓
-          </Button>
-        </div>
+          <motion.div
+            initial={{ opacity: 0, x: 25 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <Button className={`${nunito.className} h-12 sm:h-14 rounded-full bg-[#6B0F2B] px-8 sm:px-10 tracking-[0.18em] text-xs sm:text-sm uppercase shadow-lg hover:bg-[#8a1838] self-start lg:self-auto`}>
+              Full Price Menu ↓
+            </Button>
+          </motion.div>
+        </motion.div>
 
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+          className="mt-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5"
+        >
           {serviceCards.map((service) => (
-            <div
+            <motion.div
               key={service.title}
+              variants={cardVariants}
               className="group rounded-[28px] bg-[#f6e9eb]/80 backdrop-blur-sm px-6 py-8 text-center min-h-[230px] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
-              <div className="text-4xl mb-5">{service.icon}</div>
+              <div className="text-4xl mb-5 transition-transform duration-300 group-hover:scale-110">
+                {service.icon}
+              </div>
 
               <h3
                 className={`${playfair.className} text-[#6B0F2B] text-2xl font-semibold`}
@@ -106,9 +150,9 @@ const Services = () => {
               >
                 {service.price}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

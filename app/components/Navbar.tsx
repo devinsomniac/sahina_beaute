@@ -6,7 +6,13 @@ import { playfair, nunito } from "@/app/font";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
-const navLinks = ["SERVICES", "PRICINGS", "ABOUT", "REVIEWS", "CONTACT"];
+const navLinks = [
+  { label: "SERVICES", href: "#services" },
+  { label: "PRICINGS", href: "#menu" },
+  { label: "ABOUT", href: "#about" },
+  { label: "REVIEWS", href: "#reviews" },
+  { label: "CONTACT", href: "#contact" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,17 +43,22 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           <ul className="flex items-center gap-8 text-sm tracking-widest text-[#9A6070]">
             {navLinks.map((link) => (
-              <li
-                key={link}
-                className="cursor-pointer hover:text-[#6B0F2B] transition-colors duration-200"
-              >
-                {link}
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="cursor-pointer hover:text-[#6B0F2B] transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
               </li>
             ))}
           </ul>
-          <Button className="rounded-full px-6 bg-[#6B0F2B] hover:bg-[#C9A84C] text-white font-bold transition-colors duration-200">
-            Book Now
-          </Button>
+
+          <a href="#booking">
+            <Button className="rounded-full px-6 bg-[#6B0F2B] hover:bg-[#C9A84C] text-white font-bold transition-colors duration-200">
+              Book Now
+            </Button>
+          </a>
         </div>
 
         <button
@@ -66,17 +77,21 @@ const Navbar = () => {
       >
         <div className="flex flex-col px-6 pb-6 gap-4 bg-[#FDF6F0] border-t border-[#C9A84C]/20">
           {navLinks.map((link) => (
-            <span
-              key={link}
+            <a
+              key={link.label}
+              href={link.href}
               className="text-sm tracking-widest text-[#9A6070] hover:text-[#6B0F2B] transition-colors duration-200 cursor-pointer py-1"
               onClick={() => setIsOpen(false)}
             >
-              {link}
-            </span>
+              {link.label}
+            </a>
           ))}
-          <Button className="rounded-full px-6 bg-[#6B0F2B] hover:bg-[#C9A84C] text-white font-bold w-full mt-2 transition-colors duration-200">
-            Book Now
-          </Button>
+
+          <a href="#booking" onClick={() => setIsOpen(false)}>
+            <Button className="rounded-full px-6 bg-[#6B0F2B] hover:bg-[#C9A84C] text-white font-bold w-full mt-2 transition-colors duration-200">
+              Book Now
+            </Button>
+          </a>
         </div>
       </div>
     </nav>

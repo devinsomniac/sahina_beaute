@@ -1,57 +1,76 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const CustomCursor = () => {
-  const dotRef  = useRef<HTMLDivElement>(null)
+  const dotRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
+  const frameRef = useRef<number | null>(null)
+  const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
-    let mx = 0, my = 0  // mouse position
-    let rx = 0, ry = 0  // ring position
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)")
+    const updateEnabled = () => setEnabled(mediaQuery.matches)
 
-    // Dot follows mouse instantly
+    updateEnabled()
+    mediaQuery.addEventListener("change", updateEnabled)
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateEnabled)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!enabled) return
+
+    let mx = 0
+    let my = 0
+    let rx = 0
+    let ry = 0
+
     const onMouseMove = (e: MouseEvent) => {
       mx = e.clientX
       my = e.clientY
 
       if (dotRef.current) {
-        dotRef.current.style.left = mx + "px"
-        dotRef.current.style.top  = my + "px"
+        dotRef.current.style.left = `${mx}px`
+        dotRef.current.style.top = `${my}px`
       }
     }
 
-    // Ring lags behind using lerp (linear interpolation)
     const animate = () => {
       rx += (mx - rx) * 0.11
       ry += (my - ry) * 0.11
 
       if (ringRef.current) {
-        ringRef.current.style.left = rx + "px"
-        ringRef.current.style.top  = ry + "px"
+        ringRef.current.style.left = `${rx}px`
+        ringRef.current.style.top = `${ry}px`
       }
 
-      requestAnimationFrame(animate)
+      frameRef.current = requestAnimationFrame(animate)
     }
 
     window.addEventListener("mousemove", onMouseMove)
-    animate()
+    frameRef.current = requestAnimationFrame(animate)
 
-    return () => window.removeEventListener("mousemove", onMouseMove)
-  }, [])
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove)
+      if (frameRef.current) cancelAnimationFrame(frameRef.current)
+    }
+  }, [enabled])
+
+  if (!enabled) return null
 
   return (
     <>
-      {/* Inner dot */}
       <div
         ref={dotRef}
-        className="fixed pointer-events-none z-[9999] w-3 h-3 bg-[#6B0F2B] rounded-full -translate-x-1/2 -translate-y-1/2"
+        className="fixed pointer-events-none z-[9999] h-3 w-3 rounded-full bg-[#6B0F2B] -translate-x-1/2 -translate-y-1/2"
       />
 
-      {/* Outer ring — lags behind */}
       <div
         ref={ringRef}
-        className="fixed pointer-events-none z-[9998] w-9 h-9 border border-[#6B0F2B] rounded-full -translate-x-1/2 -translate-y-1/2"
+        className="fixed pointer-events-none z-[9998] h-9 w-9 rounded-full border border-[#6B0F2B] -translate-x-1/2 -translate-y-1/2"
       />
     </>
   )
