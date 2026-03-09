@@ -21,7 +21,7 @@ const pointVariants = {
     transition: {
       delay: 0.15 + i * 0.08,
       duration: 0.45,
-      ease: "easeOut",
+      ease: "easeOut" as const,
     },
   }),
 };

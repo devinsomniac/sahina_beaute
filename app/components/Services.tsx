@@ -71,7 +71,7 @@ const cardVariants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: "easeOut" },
+    transition: { duration: 0.55, ease: "easeOut" as const },
   },
 };
 
@@ -85,7 +85,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: "easeOut" as const }}
           className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
         >
           <div>
