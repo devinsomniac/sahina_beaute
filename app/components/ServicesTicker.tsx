@@ -1,14 +1,14 @@
 const services = [
-  "THREADING",
-  "EYE BROW TINT",
-  "MANICURE",
-  "PEDICURE",
-  "WAXING",
-  "HENNA ART",
-  "FACIALS",
-  "AYURVEDIC MASSAGE",
-  "FAKE NAILS",
-  "EYE LASHES",
+  "ÉPILATION AU FIL",
+  "TEINTURE SOURCILS",
+  "MANUCURE",
+  "PÉDICURE",
+  "ÉPILATION À LA CIRE",
+  "HENNÉ ARTISTIQUE",
+  "SOINS DU VISAGE",
+  "MASSAGE AYURVÉDIQUE",
+  "FAUX ONGLES",
+  "FAUX CILS",
 ];
 
 export default function ServicesTicker() {

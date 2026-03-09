@@ -6,11 +6,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const aboutPoints = [
-  "Exclusively for women — private and comfortable",
-  "Open 7 days a week, 10:00 to 20:00",
-  "Walk-ins welcome — no appointment necessary",
-  "Authentic Indian beauty techniques and quality care",
-  "Bridal packages available — henna, beauty and more",
+  "Exclusivement pour femmes — espace privé et confortable",
+  "Ouvert 7 jours sur 7, de 10h00 à 20h00",
+  "Sans rendez-vous bienvenue — réservation non obligatoire",
+  "Techniques de beauté indiennes authentiques et soins de qualité",
+  "Forfaits mariée disponibles — henné, beauté et plus encore",
 ];
 
 const pointVariants = {
@@ -52,8 +52,7 @@ const About = () => {
               <p
                 className={`${playfair.className} max-w-md text-base italic leading-7 text-white md:text-xl md:leading-8`}
               >
-                “Every woman deserves to feel beautiful — with or without an
-                appointment.”
+                « Chaque femme mérite de se sentir belle — avec ou sans rendez-vous. »
               </p>
             </div>
           </div>
@@ -68,7 +67,7 @@ const About = () => {
             <span
               className={`${nunito.className} text-[9px] md:text-[10px] uppercase tracking-[0.22em] text-[#6B0F2B]/70`}
             >
-              Open
+              Ouvert
             </span>
             <span
               className={`${playfair.className} text-3xl md:text-4xl leading-none text-[#6B0F2B]`}
@@ -78,7 +77,7 @@ const About = () => {
             <span
               className={`${nunito.className} mt-1 text-[9px] md:text-[10px] uppercase tracking-[0.18em] text-[#6B0F2B]/70`}
             >
-              Every Day
+              Tous les jours
             </span>
           </motion.div>
         </motion.div>
@@ -93,41 +92,45 @@ const About = () => {
             className={`${nunito.className} flex items-center gap-3 uppercase tracking-[0.35em] text-[11px] text-[#C9A84C]`}
           >
             <span className="inline-block h-px w-8 bg-[#C9A84C]" />
-            About Us
+            À propos de nous
           </p>
 
           <h2
             className={`${playfair.className} mt-5 text-4xl leading-tight text-[#6B0F2B] md:text-5xl xl:text-6xl`}
           >
-            Your <span className="italic text-[#C9A84C]">Indian beauty</span>{" "}
-            home in Saint-Denis
+            Votre espace de{" "}
+            <span className="italic text-[#C9A84C]">beauté indienne</span>{" "}
+            à Saint-Denis
           </h2>
 
           <p
             className={`${nunito.className} mt-6 text-base leading-8 text-[#9A6070]`}
           >
-            Sahina Beauté is a women-only Indian beauty salon located in
-            Saint-Denis. The salon offers a wide range of beauty and wellness
-            services including hand beauty, foot beauty, facials, fake nails,
-            manicure, épilation, henna, massage, lashes and more.
+            Sahina Beauté est un salon de beauté indien réservé aux femmes,
+            situé à Saint-Denis. Le salon propose une large gamme de soins de
+            beauté et de bien-être, notamment la beauté des mains, la beauté des
+            pieds, les soins du visage, les faux ongles, la manucure,
+            l’épilation, le henné, les massages, les cils et bien plus encore.
           </p>
 
           <p
             className={`${nunito.className} mt-5 text-base leading-8 text-[#9A6070]`}
           >
-            From everyday self-care to special-event preparation, the salon
-            combines traditional Indian beauty elements with modern salon
-            treatments. The menu also shows bridal henna and multiple premium
-            beauty packages, making it suitable for both regular visits and
-            occasion-based bookings.
+            Des soins du quotidien à la préparation pour les grandes occasions,
+            le salon associe des éléments traditionnels de la beauté indienne à
+            des prestations modernes de salon. La carte met également en avant
+            le henné de mariée ainsi que plusieurs forfaits premium, ce qui le
+            rend idéal aussi bien pour les visites régulières que pour les
+            réservations liées à un événement.
           </p>
 
           <p
             className={`${nunito.className} mt-5 text-base leading-8 text-[#9A6070]`}
           >
-            Clients can visit for walk-in appointments, and the salon is open
-            seven days a week from 10:00 to 20:00. The branding and service menu
-            also clearly position it as a women-reserved Indian beauty salon.
+            Les clientes peuvent venir sans rendez-vous, et le salon est ouvert
+            sept jours sur sept de 10h00 à 20h00. L’identité visuelle ainsi que
+            la carte des services positionnent clairement l’établissement comme
+            un salon de beauté indien exclusivement féminin.
           </p>
 
           <div className="mt-8 flex flex-col gap-4">

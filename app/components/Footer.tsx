@@ -15,7 +15,7 @@ const Footer = () => {
           <p
             className={`${nunito.className} mt-2 uppercase tracking-[0.28em] text-[11px] text-[#d9bb63]`}
           >
-            Indian Beauty Salon · Saint-Denis, France
+            Salon de beauté indien · Saint-Denis, France
           </p>
         </div>
 
@@ -31,19 +31,19 @@ const Footer = () => {
 
           <li>
             <a href="#menu" className="hover:text-white transition-colors">
-              Prices
+              Tarifs
             </a>
           </li>
 
           <li>
             <a href="#about" className="hover:text-white transition-colors">
-              About
+              À propos
             </a>
           </li>
 
           <li>
             <a href="#booking" className="hover:text-white transition-colors">
-              Book
+              Réserver
             </a>
           </li>
 
@@ -58,12 +58,12 @@ const Footer = () => {
         <div
           className={`${nunito.className} text-right text-sm leading-7 text-[#b78a95]`}
         >
-          <p>© 2026 Sahina Beauté. All rights reserved.</p>
+          <p>© 2026 Sahina Beauté. Tous droits réservés.</p>
 
           <p>8 Rue Dezobry · 93200 Saint-Denis ♥</p>
 
           <p className="mt-2 text-xs text-[#9a6b78]">
-            Crafted by{" "}
+            Créé par{" "}
             <a
               href="https://inzamam.cloud"
               target="_blank"

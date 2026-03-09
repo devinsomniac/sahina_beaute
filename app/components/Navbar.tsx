@@ -8,9 +8,9 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "SERVICES", href: "#services" },
-  { label: "PRICINGS", href: "#menu" },
-  { label: "ABOUT", href: "#about" },
-  { label: "REVIEWS", href: "#reviews" },
+  { label: "TARIFS", href: "#menu" },
+  { label: "À PROPOS", href: "#about" },
+  { label: "AVIS", href: "#reviews" },
   { label: "CONTACT", href: "#contact" },
 ];
 
@@ -56,7 +56,7 @@ const Navbar = () => {
 
           <a href="#booking">
             <Button className="rounded-full px-6 bg-[#6B0F2B] hover:bg-[#C9A84C] text-white font-bold transition-colors duration-200">
-              Book Now
+             Réservez maintenant
             </Button>
           </a>
         </div>
@@ -89,7 +89,7 @@ const Navbar = () => {
 
           <a href="#booking" onClick={() => setIsOpen(false)}>
             <Button className="rounded-full px-6 bg-[#6B0F2B] hover:bg-[#C9A84C] text-white font-bold w-full mt-2 transition-colors duration-200">
-              Book Now
+              Réservez maintenant
             </Button>
           </a>
         </div>

@@ -1,179 +1,179 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { playfair, nunito } from "@/app/font";
 
 const tabs = [
-  "NAILS",
-  "WAXING",
-  "FACE & BROW",
+  "ONGLES",
+  "ÉPILATION",
+  "VISAGE & SOURCILS",
   "MASSAGE",
-  "HENNA",
-  "LASHES & MORE",
+  "HENNÉ",
+  "CILS & PLUS",
 ];
 
 const pricingData = {
-  NAILS: [
+  ONGLES: [
     {
-      title: "Foot Beauty (Pedicure)",
+      title: "Beauté des Pieds (Pédicure)",
       icon: "🦶",
-      subtitle: "Nail & foot care services",
+      subtitle: "Soins des ongles et des pieds",
       items: [
-        { name: "Simple / Semi-permanent varnish", price: "€10 / €20" },
-        { name: "French / Semi-permanent French varnish", price: "€15 / €25" },
-        { name: "Foot beauty (basic)", price: "€28" },
-        { name: "Foot beauty + simple varnish", price: "€30" },
-        { name: "Foot beauty + French varnish", price: "€35" },
-        { name: "Foot beauty + semi-permanent varnish", price: "€40" },
-        { name: "Foot beauty + semi-permanent French", price: "€45" },
+        { name: "Vernis simple / semi-permanent", price: "10 € / 20 €" },
+        { name: "French / French semi-permanent", price: "15 € / 25 €" },
+        { name: "Beauté des pieds (basique)", price: "28 €" },
+        { name: "Beauté des pieds + vernis simple", price: "30 €" },
+        { name: "Beauté des pieds + French", price: "35 €" },
+        { name: "Beauté des pieds + vernis semi-permanent", price: "40 €" },
+        { name: "Beauté des pieds + French semi-permanent", price: "45 €" },
       ],
     },
     {
-      title: "Hand Manicure",
+      title: "Manucure des Mains",
       icon: "💅",
-      subtitle: "Nail polish, french & full manicure",
+      subtitle: "Vernis, French et manucure complète",
       items: [
-        { name: "Simple / Semi-permanent varnish", price: "€10 / €18" },
-        { name: "French simple / semi-permanent", price: "€18 / €25" },
+        { name: "Vernis simple / semi-permanent", price: "10 € / 18 €" },
+        { name: "French simple / semi-permanent", price: "18 € / 25 €" },
         {
-          name: "Complete manicure",
-          desc: "Filing, cleaning, exfoliation, simple varnish",
-          price: "€17",
+          name: "Manucure complète",
+          desc: "Limage, nettoyage, exfoliation, vernis simple",
+          price: "17 €",
         },
-        { name: "Complete manicure + French", price: "€22" },
-        { name: "Complete manicure + semi-permanent varnish", price: "€30" },
-        { name: "Complete manicure + French semi-permanent", price: "€35" },
+        { name: "Manucure complète + French", price: "22 €" },
+        { name: "Manucure complète + vernis semi-permanent", price: "30 €" },
+        { name: "Manucure complète + French semi-permanent", price: "35 €" },
       ],
     },
     {
-      title: "Hand & Foot Packages",
+      title: "Forfaits Mains & Pieds",
       icon: "🤝",
-      subtitle: "Combined manicure + pedicure deals",
+      subtitle: "Offres combinées manucure + pédicure",
       items: [
-        { name: "Manicure + Beauté des pieds", price: "€35" },
-        { name: "Hands + Feet with simple polish", price: "€43" },
-        { name: "Hands + Feet with french polish", price: "€48" },
-        { name: "Hands + Feet with semi-permanent", price: "€65" },
-        { name: "Hands + Feet with french semi-permanent", price: "€70" },
+        { name: "Manucure + beauté des pieds", price: "35 €" },
+        { name: "Mains + pieds avec vernis simple", price: "43 €" },
+        { name: "Mains + pieds avec French", price: "48 €" },
+        { name: "Mains + pieds avec semi-permanent", price: "65 €" },
+        { name: "Mains + pieds avec French semi-permanent", price: "70 €" },
       ],
     },
     {
-      title: "Fake Nails (Pose de Faux Ongles)",
+      title: "Faux Ongles",
       icon: "💎",
-      subtitle: "Resin & UV gel extensions",
+      subtitle: "Extensions en résine et gel UV",
       items: [
-        { name: "Pose résine (hands / feet)", price: "€25" },
-        { name: "Pose gel UV (hands / feet)", price: "€30" },
-        { name: "Resin + simple varnish", price: "€30" },
-        { name: "Resin + semi-permanent varnish", price: "€40" },
-        { name: "Resin + semi-permanent French", price: "€43" },
-        { name: "UV gel + simple varnish", price: "€35" },
-        { name: "UV gel + semi-permanent varnish", price: "€45" },
-        { name: "UV gel + semi-permanent French", price: "€48" },
-        { name: "Refill (résine / gel)", price: "€20 / €25" },
-        { name: "Refill + simple varnish", price: "€25" },
-        { name: "Refill + semi-permanent varnish", price: "€35" },
-        { name: "Refill + semi-permanent French", price: "€38" },
-        { name: "Baby boomer", price: "€40" },
-        { name: "Remove semi-permanent", price: "€5" },
-        { name: "Remove fake nails", price: "€10" },
-        { name: "Tooth diamond placement", price: "€1" },
-        { name: "Nail art / design", price: "€1" },
+        { name: "Pose résine (mains / pieds)", price: "25 €" },
+        { name: "Pose gel UV (mains / pieds)", price: "30 €" },
+        { name: "Résine + vernis simple", price: "30 €" },
+        { name: "Résine + vernis semi-permanent", price: "40 €" },
+        { name: "Résine + French semi-permanent", price: "43 €" },
+        { name: "Gel UV + vernis simple", price: "35 €" },
+        { name: "Gel UV + vernis semi-permanent", price: "45 €" },
+        { name: "Gel UV + French semi-permanent", price: "48 €" },
+        { name: "Remplissage (résine / gel)", price: "20 € / 25 €" },
+        { name: "Remplissage + vernis simple", price: "25 €" },
+        { name: "Remplissage + vernis semi-permanent", price: "35 €" },
+        { name: "Remplissage + French semi-permanent", price: "38 €" },
+        { name: "Baby boomer", price: "40 €" },
+        { name: "Retrait semi-permanent", price: "5 €" },
+        { name: "Retrait faux ongles", price: "10 €" },
+        { name: "Pose strass dentaire", price: "1 €" },
+        { name: "Nail art / design", price: "1 €" },
       ],
     },
   ],
 
-  WAXING: [
+  "ÉPILATION": [
     {
-      title: "Face Epilation",
+      title: "Épilation du Visage",
       icon: "🌸",
-      subtitle: "Threading (Fil) & Wax (Cire)",
+      subtitle: "Au fil & à la cire",
       items: [
-        { name: "Eyebrows", price: "€5 / €5" },
-        { name: "Lips", price: "€5 / €5" },
-        { name: "Chin", price: "€5 / €5" },
-        { name: "Neck", price: "€5 / €5" },
-        { name: "Eyebrows + Lips + Chin", price: "€14 / €12" },
-        { name: "Full face", price: "€20 / €18" },
-        { name: "Full face + neck", price: "€22 / €20" },
+        { name: "Sourcils", price: "5 € / 5 €" },
+        { name: "Lèvres", price: "5 € / 5 €" },
+        { name: "Menton", price: "5 € / 5 €" },
+        { name: "Cou", price: "5 € / 5 €" },
+        { name: "Sourcils + lèvres + menton", price: "14 € / 12 €" },
+        { name: "Visage complet", price: "20 € / 18 €" },
+        { name: "Visage complet + cou", price: "22 € / 20 €" },
       ],
     },
     {
-      title: "Body Waxing (Cire)",
+      title: "Épilation du Corps",
       icon: "✨",
-      subtitle: "Individual body areas",
+      subtitle: "Zones du corps à la cire",
       items: [
-        { name: "Nose", price: "€4" },
-        { name: "Underarms", price: "€8" },
-        { name: "Half arms", price: "€10" },
-        { name: "Full arms", price: "€15" },
-        { name: "Half legs", price: "€15" },
-        { name: "Full legs", price: "€22" },
-        { name: "Three-quarter legs", price: "€17" },
-        { name: "Thighs", price: "€15" },
-        { name: "Stomach", price: "€7" },
-        { name: "Full back", price: "€12" },
-        { name: "Full buttocks", price: "€10" },
-        { name: "Simple bikini", price: "€10" },
-        { name: "Semi-integral bikini", price: "€15" },
-        { name: "Integral bikini", price: "€22" },
+        { name: "Nez", price: "4 €" },
+        { name: "Aisselles", price: "8 €" },
+        { name: "Demi-bras", price: "10 €" },
+        { name: "Bras complets", price: "15 €" },
+        { name: "Demi-jambes", price: "15 €" },
+        { name: "Jambes complètes", price: "22 €" },
+        { name: "Trois-quarts jambes", price: "17 €" },
+        { name: "Cuisses", price: "15 €" },
+        { name: "Ventre", price: "7 €" },
+        { name: "Dos complet", price: "12 €" },
+        { name: "Fesses complètes", price: "10 €" },
+        { name: "Maillot simple", price: "10 €" },
+        { name: "Maillot semi-intégral", price: "15 €" },
+        { name: "Maillot intégral", price: "22 €" },
       ],
     },
     {
-      title: "Epilation Packages",
+      title: "Forfaits Épilation",
       icon: "🧖",
-      subtitle: "Full body waxing packages",
+      subtitle: "Forfaits épilation corps complet",
       items: [
         {
-          name: "Half legs + underarms + simple bikini",
-          price: "€30",
+          name: "Demi-jambes + aisselles + maillot simple",
+          price: "30 €",
         },
         {
-          name: "Half legs + underarms + full bikini",
-          price: "€39",
+          name: "Demi-jambes + aisselles + maillot intégral",
+          price: "39 €",
         },
         {
-          name: "Full legs + underarms + full bikini",
-          price: "€45",
+          name: "Jambes complètes + aisselles + maillot intégral",
+          price: "45 €",
         },
         {
-          name: "Full legs + underarms + full bikini + full arms",
-          price: "€63",
+          name: "Jambes complètes + aisselles + maillot intégral + bras complets",
+          price: "63 €",
         },
       ],
     },
   ],
 
-  "FACE & BROW": [
+  "VISAGE & SOURCILS": [
     {
-      title: "Skin Facials",
+      title: "Soins du Visage",
       icon: "✨",
-      subtitle: "Face care & treatments",
+      subtitle: "Soins et traitements du visage",
       items: [
         {
-          name: "Soin du visage (40 mins)",
-          desc: "Cleansing + exfoliation + steam + blackhead removal + mask",
-          price: "€27",
+          name: "Soin du visage (40 min)",
+          desc: "Nettoyage + exfoliation + vapeur + extraction des points noirs + masque",
+          price: "27 €",
         },
         {
-          name: "Soin spécial du visage (50 mins)",
-          desc: "Pigmentation & acne treatment",
-          price: "€35",
+          name: "Soin spécial du visage (50 min)",
+          desc: "Traitement de la pigmentation et de l’acné",
+          price: "35 €",
         },
-        { name: "SB Special soin du visage (1h)", price: "€45" },
+        { name: "Soin du visage spécial SB (1 h)", price: "45 €" },
       ],
     },
     {
-      title: "Eye & Brow",
+      title: "Yeux & Sourcils",
       icon: "👁️",
-      subtitle: "Tinting and brow lift",
+      subtitle: "Teinture et brow lift",
       items: [
-        { name: "Eyebrow tint", price: "€8" },
-        { name: "Eyelash tint", price: "€10" },
-        { name: "Tint package + eyebrow epilation", price: "€12" },
+        { name: "Teinture des sourcils", price: "8 €" },
+        { name: "Teinture des cils", price: "10 €" },
+        { name: "Forfait teinture + épilation des sourcils", price: "12 €" },
         {
-          name: "Eye brow lift",
-          desc: "Brow lamination, brow lift, epilation, tint",
-          price: "€40",
+          name: "Brow lift",
+          desc: "Lamination, brow lift, épilation, teinture",
+          price: "40 €",
         },
       ],
     },
@@ -181,52 +181,52 @@ const pricingData = {
 
   MASSAGE: [
     {
-      title: "Massage Treatments",
+      title: "Soins Massage",
       icon: "💆",
-      subtitle: "Body relaxation & wellness",
+      subtitle: "Relaxation du corps et bien-être",
       items: [
         {
-          name: "Massage Ayurvédique",
-          desc: "Relaxing full-body massage with warm oil",
-          price: "€50",
+          name: "Massage ayurvédique",
+          desc: "Massage relaxant du corps entier avec huile chaude",
+          price: "50 €",
         },
         {
-          name: "Massage des pieds / dos / tête (30 mins)",
-          desc: "Warm oil massage",
-          price: "€30",
+          name: "Massage des pieds / dos / tête (30 min)",
+          desc: "Massage à l’huile chaude",
+          price: "30 €",
         },
-        { name: "Avec gommage", price: "€275" },
+        { name: "Avec gommage", price: "275 €" },
       ],
     },
   ],
 
-  HENNA: [
+  HENNÉ: [
     {
-      title: "Henna Art",
+      title: "Art au Henné",
       icon: "🌿",
-      subtitle: "Traditional hand & bridal henna",
+      subtitle: "Henné traditionnel pour les mains et mariage",
       items: [
-        { name: "Henné dessin", price: "€5" },
-        { name: "Henné mariage", price: "€30" },
+        { name: "Dessin au henné", price: "5 €" },
+        { name: "Henné mariage", price: "30 €" },
       ],
     },
   ],
 
-  "LASHES & MORE": [
+  "CILS & PLUS": [
     {
-      title: "Fake Eyelashes",
+      title: "Faux Cils",
       icon: "👁️",
-      subtitle: "Lash services",
+      subtitle: "Services pour les cils",
       items: [
-        { name: "Pose de faux cils normal", price: "€25" },
-        { name: "Enlever de faux cils", price: "€10" },
+        { name: "Pose de faux cils normal", price: "25 €" },
+        { name: "Retrait de faux cils", price: "10 €" },
       ],
     },
     {
-      title: "Diamond Tooth",
+      title: "Strass Dentaire",
       icon: "💎",
-      subtitle: "Decorative tooth jewel",
-      items: [{ name: "Diamant pour les dents", price: "€8" }],
+      subtitle: "Bijou décoratif pour dent",
+      items: [{ name: "Strass dentaire", price: "8 €" }],
     },
   ],
 };
@@ -288,7 +288,7 @@ function PriceCard({
 
 const Pricing = () => {
   const [activeTab, setActiveTab] =
-    useState<keyof typeof pricingData>("NAILS");
+    useState<keyof typeof pricingData>("ONGLES");
 
   return (
     <section id="menu" className="bg-[#f8eef1] px-6 py-16 md:px-10 lg:px-16">
@@ -298,15 +298,15 @@ const Pricing = () => {
             className={`${nunito.className} flex items-center justify-center gap-3 uppercase tracking-[0.35em] text-[11px] text-[#C9A84C]`}
           >
             <span className="inline-block h-px w-8 bg-[#C9A84C]" />
-            Price Menu
+            Carte des Prix
           </p>
           <h2
             className={`${playfair.className} mt-4 text-5xl md:text-7xl text-[#6B0F2B]`}
           >
-            Our <span className="italic text-[#C9A84C]">full price list</span>
+            Notre <span className="italic text-[#C9A84C]">liste complète des tarifs</span>
           </h2>
           <p className={`${nunito.className} mt-4 text-[#9A6070]`}>
-            All prices are inclusive. Walk-ins welcome. We also take appointments by phone.
+            Tous les prix sont inclusifs. Sans rendez-vous bienvenue. Nous prenons aussi les rendez-vous par téléphone.
           </p>
         </div>
 

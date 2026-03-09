@@ -20,7 +20,7 @@ const Hero = () => {
             >
                 <div className={`${nunito.className} border-2 mt-4 py-1 w-full md:w-[300px] flex-col items-center md:flex-row  md:mt-0 border-[#C9A84C] bg-burgundy/20 tracking-widest uppercase font-extralight px-4 rounded-full text-burgundy/90 flex gap-2 items-center text-xs md:text-sm`}>
                     <IoHeartCircleSharp className='animate-ping' />
-                    <p className=' text-center'>INDIAN BEAUTY SALON <br></br>
+                    <p className=' text-center'>Salon de beauté indien <br></br>
                     Salon réserve aux femmes</p>
                     
                 </div>
@@ -46,7 +46,7 @@ const Hero = () => {
                     </motion.div>
 
                     <p className={`${nunito.className} text-burgundy/90 text-center`}>
-                        our exclusive Indian beauty sanctuary in Saint-Denis. Expert care for hands,feet, face, hair, waxing, henna and much more — with or without appointment.
+                        Notre institut de beauté indien exclusif à Saint-Denis. Soins experts pour les mains, les pieds, le visage, les cheveux, épilation, henné et bien plus encore — avec ou sans rendez-vous.
                     </p>
                 </div>
 
@@ -101,7 +101,7 @@ const Hero = () => {
                 <div className='flex gap-2 mt-4 flex-col md:flex-row mb-2'>
                     <a href="#booking">
                         <Button className={`${nunito.className} p-6 bg-burgundy rounded-full`}>
-                            Book Appointment
+                           Prendre rendez-vous
                         </Button>
                     </a>
                     <a href="#menu">
@@ -109,7 +109,7 @@ const Hero = () => {
                             className={`${nunito.className} p-6 bg-burgundy/10 border-2 border-burgundy rounded-full`}
                             variant={"outline"}
                         >
-                            View Pricing Menu
+                             Voir le menu des tarifs
                         </Button>
                     </a>
                 </div>

@@ -7,44 +7,44 @@ import { motion } from "framer-motion";
 const reviews = [
   {
     name: "Fatima R.",
-    role: "Bridal client",
+    role: "Cliente mariée",
     quote:
-      "The bridal henna design was absolutely stunning. The artist was so skilled and patient. I received so many compliments at my event.",
+      "Le henné de mariée était absolument magnifique. L’artiste était très talentueuse et patiente. J’ai reçu énormément de compliments pendant mon événement.",
     avatar: "from-[#f0c7cf] to-[#d68da0]",
   },
   {
     name: "Priya S.",
-    role: "Regular client",
+    role: "Cliente régulière",
     quote:
-      "I love this salon. The Ayurvedic massage was deeply relaxing and the staff were so warm and welcoming. It has become one of my favourite places.",
+      "J’adore ce salon. Le massage ayurvédique était profondément relaxant et l’équipe était très chaleureuse et accueillante. C’est devenu l’un de mes endroits préférés.",
     avatar: "from-[#e5cf86] to-[#c9a84c]",
   },
   {
     name: "Amina K.",
-    role: "Verified review",
+    role: "Avis vérifié",
     quote:
-      "Great prices for amazing quality. My gel nails lasted for weeks and the threading was perfect. I always feel very well taken care of here.",
+      "Des prix excellents pour une qualité incroyable. Mes ongles en gel ont tenu pendant des semaines et l’épilation au fil était parfaite. Je me sens toujours très bien prise en charge ici.",
     avatar: "from-[#c57a91] to-[#8f2948]",
   },
   {
     name: "Sonia M.",
-    role: "Facial client",
+    role: "Cliente soin du visage",
     quote:
-      "The facial treatment left my skin feeling fresh, clean and glowing. The atmosphere was calm and professional from start to finish.",
+      "Le soin du visage a laissé ma peau fraîche, propre et éclatante. L’atmosphère était calme et professionnelle du début à la fin.",
     avatar: "from-[#d9b7bf] to-[#b97083]",
   },
   {
     name: "Nadia T.",
-    role: "Waxing client",
+    role: "Cliente épilation",
     quote:
-      "Very clean, very gentle and very professional. The waxing service was quick and comfortable, and I appreciated how welcoming the team was.",
+      "Très propre, très douce et très professionnelle. Le service d’épilation était rapide et confortable, et j’ai beaucoup apprécié l’accueil chaleureux de l’équipe.",
     avatar: "from-[#edd8de] to-[#d2a3ae]",
   },
   {
     name: "Sara L.",
-    role: "Henna client",
+    role: "Cliente henné",
     quote:
-      "Beautiful detailed henna work and such a lovely experience overall. The designs were elegant and exactly what I wanted for a special occasion.",
+      "Un magnifique travail de henné, très détaillé, et une expérience globalement très agréable. Les motifs étaient élégants et exactement comme je les voulais pour une occasion spéciale.",
     avatar: "from-[#dabd68] to-[#b48a2e]",
   },
 ];
@@ -85,13 +85,14 @@ const Reviews = () => {
             className={`${nunito.className} flex items-center justify-center gap-3 uppercase tracking-[0.35em] text-[11px] text-[#C9A84C]`}
           >
             <span className="inline-block h-px w-8 bg-[#C9A84C]" />
-            Client Reviews
+            Avis Clients
           </p>
 
           <h2
             className={`${playfair.className} mt-5 text-4xl leading-tight text-[#6B0F2B] md:text-5xl xl:text-6xl`}
           >
-            What our <span className="italic text-[#C9A84C]">clients say</span>
+            Ce que disent nos{" "}
+            <span className="italic text-[#C9A84C]">clientes</span>
           </h2>
         </motion.div>
 
