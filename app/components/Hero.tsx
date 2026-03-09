@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const Hero = () => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-5rem)] bg-gradient-to-br from-[#FDF6F0] via-[#f1d3d3] to-[#e6bcbc]'>
-            
+
             {/* Left Side */}
             <motion.div
                 initial={{ opacity: 0, x: -40 }}
@@ -99,12 +99,19 @@ const Hero = () => {
                 </div>
 
                 <div className='flex gap-2 mt-4 flex-col md:flex-row mb-2'>
-                    <Button className={`${nunito.className} p-6 bg-burgundy rounded-full`}>
-                        Book Appointment
-                    </Button>
-                    <Button className={`${nunito.className} p-6 bg-burgundy/10 border-2 border-burgundy rounded-full`} variant={'outline'}>
-                        View Pricing Menu
-                    </Button>
+                    <a href="#booking">
+                        <Button className={`${nunito.className} p-6 bg-burgundy rounded-full`}>
+                            Book Appointment
+                        </Button>
+                    </a>
+                    <a href="#menu">
+                        <Button
+                            className={`${nunito.className} p-6 bg-burgundy/10 border-2 border-burgundy rounded-full`}
+                            variant={"outline"}
+                        >
+                            View Pricing Menu
+                        </Button>
+                    </a>
                 </div>
             </motion.div>
         </div>
