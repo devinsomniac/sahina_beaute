@@ -25,7 +25,7 @@ The website is fully in French and serves as both an informational and booking p
 - **Contact & Map** — Address, phone numbers, social links, and a Google Maps link
 - **Opening Promo Banner** — 20% off all services for the opening period
 - **Responsive Design** — Optimised for mobile and desktop
-- **Walk-ins Welcome** — Clearly communicated throughout the UI
+- **Email Notifications via Resend** — On booking submission, automated emails are sent to both the customer (confirmation) and the salon owner (new appointment alert)
 
 ---
 
@@ -37,6 +37,7 @@ The website is fully in French and serves as both an informational and booking p
 | [TypeScript](https://www.typescriptlang.org) | Type-safe development |
 | [Tailwind CSS](https://tailwindcss.com) | Utility-first styling |
 | [shadcn/ui](https://ui.shadcn.com) | UI component library |
+| [Resend](https://resend.com) | Transactional email service |
 | [Vercel](https://vercel.com) | Hosting & deployment |
 
 ---
