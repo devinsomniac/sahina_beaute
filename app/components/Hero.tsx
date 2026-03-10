@@ -62,11 +62,6 @@ const Hero = () => {
                 className="absolute -right-3 -top-2 z-10 flex h-20 w-20 flex-col items-center justify-center rounded-full border-[3px] border-white bg-[#D9BB63] text-center shadow-[0_12px_35px_rgba(91,22,48,0.28)] sm:-right-6 sm:-top-3 sm:h-24 sm:w-24 md:-right-8 md:-top-4 md:h-28 md:w-28 lg:-right-10 lg:-top-5 lg:h-32 lg:w-32"
               >
                 <span
-                  className={`${nunito.className} text-[7px] font-bold uppercase leading-none tracking-[0.18em] text-[#6B0F2B]/80 sm:text-[8px] md:text-[9px]`}
-                >
-                  Nouvelle
-                </span>
-                <span
                   className={`${playfair.className} my-[1px] text-xl leading-none text-[#6B0F2B] sm:text-2xl md:text-3xl lg:text-4xl`}
                 >
                   -20%
@@ -119,7 +114,7 @@ const Hero = () => {
           <p
             className={`${nunito.className} mt-4 text-center text-xs leading-6 text-burgundy/70 md:text-left`}
           >
-            * Offre valable pour l’ouverture, pendant une durée limitée.
+            * Offre valable pour l'ouverture, pendant un mois.
           </p>
         </div>
       </motion.div>
