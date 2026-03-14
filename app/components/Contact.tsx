@@ -138,7 +138,7 @@ const Contact = () => {
             </p>
 
             <p className={`${playfair.className} text-2xl text-[#7c0f2f]`}>
-              10:00 – 20:00
+              08:00 – 20:00
             </p>
           </div>
         </div>

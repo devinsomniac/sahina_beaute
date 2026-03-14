@@ -10,6 +10,7 @@ type BookingFormData = {
   phone: string;
   email: string;
   date: string;
+  preferredTime: string;
   service: string;
   notes: string;
 };
@@ -20,6 +21,7 @@ const initialFormData: BookingFormData = {
   phone: "",
   email: "",
   date: "",
+  preferredTime: "",
   service: "",
   notes: "",
 };
@@ -237,10 +239,32 @@ const Booking = () => {
                 onChange={handleChange}
                 min={new Date().toISOString().split("T")[0]}
                 required
-                className={`${nunito.className} block h-12 w-full min-w-0 max-w-full appearance-none rounded-2xl border border-[#b55b78] bg-[#8d1b3f]/80 px-4 text-sm text-white outline-none transition focus:border-[#E8D5A0]`}              />
+                className={`${nunito.className} block h-12 w-full min-w-0 max-w-full appearance-none rounded-2xl border border-[#b55b78] bg-[#8d1b3f]/80 px-4 text-sm text-white outline-none transition focus:border-[#E8D5A0]`}
+              />
             </div>
 
             <div>
+              <label
+                htmlFor="preferredTime"
+                className={`${nunito.className} mb-2 block text-sm text-[#F8E7D8]`}
+              >
+                Heure préférée
+              </label>
+              <input
+                id="preferredTime"
+                name="preferredTime"
+                type="time"
+                value={formData.preferredTime}
+                onChange={handleChange}
+                min="08:00"
+                max="22:00"
+                step={1800}
+                required
+                className={`${nunito.className} block h-12 w-full min-w-0 max-w-full appearance-none rounded-2xl border border-[#b55b78] bg-[#8d1b3f]/80 px-4 text-sm text-white outline-none transition focus:border-[#E8D5A0]`}
+              />
+            </div>
+
+            <div className="md:col-span-2">
               <label
                 htmlFor="service"
                 className={`${nunito.className} mb-2 block text-sm text-[#F8E7D8]`}

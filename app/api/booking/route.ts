@@ -3,6 +3,10 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const isValidPreferredTime = (time: string) => {
+  return time >= "08:00" && time <= "22:00";
+};
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -13,15 +17,34 @@ export async function POST(req: Request) {
       phone,
       email,
       date,
+      preferredTime,
       service,
       notes,
     } = body;
 
-    if (!firstName || !lastName || !phone || !email || !date || !service) {
+    if (
+      !firstName ||
+      !lastName ||
+      !phone ||
+      !email ||
+      !date ||
+      !preferredTime ||
+      !service
+    ) {
       return NextResponse.json(
         {
           success: false,
           message: "Please fill in all required fields.",
+        },
+        { status: 400 }
+      );
+    }
+
+    if (!isValidPreferredTime(preferredTime)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Preferred time must be between 08:00 and 22:00.",
         },
         { status: 400 }
       );
@@ -60,6 +83,7 @@ export async function POST(req: Request) {
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Phone:</strong> ${phone}</p>
           <p><strong>Date:</strong> ${date}</p>
+          <p><strong>Preferred Time:</strong> ${preferredTime}</p>
           <p><strong>Service:</strong> ${service}</p>
           <p><strong>Notes:</strong> ${notes || "No notes provided"}</p>
         </div>
@@ -88,6 +112,7 @@ export async function POST(req: Request) {
           <p>Hi ${customerName},</p>
           <p>We have received your booking request.</p>
           <p><strong>Requested date:</strong> ${date}</p>
+          <p><strong>Preferred time:</strong> ${preferredTime}</p>
           <p><strong>Service:</strong> ${service}</p>
           <p>We will contact you shortly to confirm your appointment.</p>
         </div>
