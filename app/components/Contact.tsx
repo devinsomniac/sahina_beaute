@@ -6,29 +6,54 @@ const contactItems = [
   {
     icon: "📍",
     label: "Adresse",
-    value: ["8 Rue Dezobry", "93200 Saint-Denis, France"],
+    value: [
+      {
+        text: "8 Rue Dezobry",
+        link: "https://maps.google.com/?q=8+Rue+Dezobry+93200+Saint-Denis",
+      },
+      {
+        text: "93200 Saint-Denis, France",
+        link: "https://maps.google.com/?q=8+Rue+Dezobry+93200+Saint-Denis",
+      },
+    ],
   },
   {
     icon: "📞",
     label: "Téléphone",
-    value: ["09 56 94 01 69", "07 58 50 65 61"],
+    value: [
+      { text: "09 56 94 01 69", link: "tel:+33956940169" },
+      { text: "07 58 50 65 61", link: "tel:+33758506561" },
+    ],
   },
   {
     icon: "📱",
     label: "Instagram",
-    value: ["@sahina_beaute"],
+    value: [
+      {
+        text: "@sahina.beaute",
+        link: "https://www.instagram.com/sahina.beaute/",
+      },
+    ],
   },
   {
     icon: "🎵",
     label: "TikTok",
-    value: ["@sahina.beaute"], 
+    value: [
+      {
+        text: "@sahina.beaute",
+        link: "https://tiktok.com/@sahina.beaute",
+      },
+    ],
   },
 ];
 
 const Contact = () => {
   return (
     <section id="contact" className="grid grid-cols-1 lg:grid-cols-2">
+      
+      {/* LEFT SIDE */}
       <div className="bg-[#f6e9eb] px-6 py-16 md:px-10 lg:px-16 xl:px-20">
+
         <p
           className={`${nunito.className} flex items-center gap-3 uppercase tracking-[0.35em] text-[11px] text-[#C9A84C]`}
         >
@@ -45,6 +70,7 @@ const Contact = () => {
         <div className="mt-10 flex flex-col gap-7">
           {contactItems.map((item) => (
             <div key={item.label} className="flex gap-4">
+
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#efc0c9] text-lg">
                 {item.icon}
               </div>
@@ -55,11 +81,20 @@ const Contact = () => {
                 >
                   {item.label}
                 </p>
+
                 <div
                   className={`${nunito.className} mt-1 space-y-1 text-[#9A6070]`}
                 >
                   {item.value.map((line) => (
-                    <p key={line}>{line}</p>
+                    <a
+                      key={line.text}
+                      href={line.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block hover:text-[#7c0828] hover:underline transition-colors"
+                    >
+                      {line.text}
+                    </a>
                   ))}
                 </div>
               </div>
@@ -82,7 +117,10 @@ const Contact = () => {
         </div>
       </div>
 
+
+      {/* RIGHT SIDE */}
       <div className="bg-[#fcf9fa] px-6 py-16 md:px-10 lg:px-16 xl:px-20">
+
         <div
           className={`${nunito.className} inline-flex items-center gap-2 rounded-full border border-[#e3cfd5] bg-[#f7eef1] px-4 py-2 uppercase tracking-[0.2em] text-xs text-[#9A6070]`}
         >
@@ -98,6 +136,7 @@ const Contact = () => {
             <p className={`${nunito.className} text-[#6B0F2B]`}>
               Lundi – Dimanche
             </p>
+
             <p className={`${playfair.className} text-2xl text-[#7c0f2f]`}>
               10:00 – 20:00
             </p>
@@ -121,7 +160,9 @@ const Contact = () => {
             </Button>
           </a>
         </div>
+
       </div>
+
     </section>
   );
 };

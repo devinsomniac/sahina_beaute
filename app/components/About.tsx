@@ -62,7 +62,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="absolute right-2 top-2 md:-right-4 md:-top-4 flex h-24 w-24 md:h-32 md:w-32 flex-col items-center justify-center rounded-full bg-[#d9bb63] text-center shadow-xl"
+            className="absolute right-2 top-2 md:-right-4 md:-top-4 flex h-28 w-28 md:h-32 md:w-32 flex-col items-center justify-center rounded-full bg-[#d9bb63] text-center shadow-xl"
           >
             <span
               className={`${nunito.className} text-[9px] md:text-[10px] uppercase tracking-[0.22em] text-[#6B0F2B]/70`}

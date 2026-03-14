@@ -33,11 +33,11 @@ const Hero = () => {
             <h1
               className={`${playfair.className} text-center text-4xl leading-tight text-burgundy/80 sm:text-5xl md:text-left md:text-6xl`}
             >
-              Welcome to
+              Bienvenue à
             </h1>
 
             {/* Logo block */}
-            <div className="relative ml-auto mt-3 flex w-full max-w-[320px] items-center justify-center sm:max-w-[360px] md:max-w-[430px] lg:max-w-[480px]">
+            <div className="relative mx-auto mt-3 flex w-full max-w-[320px] items-center justify-center sm:max-w-[360px] md:ml-auto md:mr-0 md:max-w-[430px] lg:max-w-[480px]">
               <motion.div
                 initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}
