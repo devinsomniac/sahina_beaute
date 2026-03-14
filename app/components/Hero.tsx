@@ -17,11 +17,11 @@ const Hero = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="flex flex-col sm:items-center justify-center px-5 py-8 sm:px-6 md:px-8 lg:px-10"
       >
-        <div className="w-full max-w-[620px] sm:flex sm:flex-col sm:justify-center sm:items-center  md:ml-10 lg:ml-14 xl:ml-20">
+        <div className="w-full max-w-[620px] flex flex-col justify-center items-center  md:ml-10 lg:ml-14 xl:ml-20">
           <div
-            className={`${nunito.className} mt-3 flex w-full max-w-[340px] ml-2.5 items-center justify-center rounded-full border-2 border-[#C9A84C] bg-burgundy/20 px-5 py-3 text-[10px] font-extralight uppercase text-burgundy/90 sm:text-xs md:mt-0 md:max-w-[320px]`}
+            className={`${nunito.className} mt-3 flex w-full max-w-[340px]  items-center justify-center rounded-full border-2 border-[#C9A84C] bg-burgundy/20 px-5 py-3 text-[10px] font-extralight uppercase text-burgundy/90 sm:text-xs md:mt-0 md:max-w-[320px]`}
           >
-            <div className="text-center leading-[1.35] tracking-[0.12em] md:tracking-widest">
+            <div className="text-center">
               <div>SALON DE BEAUTÉ INDIEN</div>
               <div>SALON RÉSERVÉ AUX FEMMES</div>
             </div>
