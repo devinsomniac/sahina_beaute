@@ -206,8 +206,8 @@ const pricingData = {
       icon: "🌿",
       subtitle: "Henné traditionnel pour les mains et mariage",
       items: [
-        { name: "Dessin au henné", price: "5 €" },
-        { name: "Henné mariage", price: "30 €" },
+        { name: "Dessin au henné (ä partit de)", price: "5 €" },
+        { name: "Henné mariage (ä partit de)", price: "30 €" },
       ],
     },
   ],
