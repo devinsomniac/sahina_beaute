@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import CustomCursor from "./components/CustomCursor";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "Sahina Beauté",
@@ -22,6 +23,7 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>
+      <Analytics />
     </html>
   );
 }
