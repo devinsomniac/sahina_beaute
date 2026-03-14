@@ -126,71 +126,79 @@ const Hero = () => {
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         className="flex flex-col items-start justify-center pb-8 md:pb-0"
       >
-        <div className="mt-4 grid h-[320px] w-full max-w-[660px] grid-cols-2 grid-rows-3 gap-3 p-3 sm:h-[380px] md:h-[550px] md:p-0 lg:h-[550px]">
-          <div className="relative row-span-2 overflow-hidden rounded-2xl">
-            <Image
-              src="/Images/eye.jpeg"
-              alt="lashes"
-              fill
-              className="object-cover object-center"
-            />
+        <div className="w-full max-w-[660px] self-center md:self-start">
+          <div className="mt-4 grid h-[320px] w-full grid-cols-2 grid-rows-3 gap-3 p-3 sm:h-[380px] md:h-[550px] md:p-0 lg:h-[550px]">
+            <div className="relative row-span-2 overflow-hidden rounded-2xl">
+              <Image
+                src="/Images/eye.jpeg"
+                alt="lashes"
+                fill
+                className="object-cover object-center"
+              />
+            </div>
+
+            <div className="relative row-span-1 overflow-hidden rounded-2xl">
+              <Image
+                src="/Images/facial.jpeg"
+                alt="facial"
+                fill
+                className="object-cover object-center"
+              />
+            </div>
+
+            <div className="relative row-span-2 overflow-hidden rounded-2xl">
+              <Image
+                src="/Images/Nail.jpeg"
+                alt="nails"
+                fill
+                className="object-cover object-center"
+              />
+            </div>
+
+            <div className="relative row-span-2 overflow-hidden rounded-2xl">
+              <Image
+                src="/Images/Wax.jpeg"
+                alt="waxing"
+                fill
+                className="object-cover object-center"
+              />
+            </div>
           </div>
 
-          <div className="relative row-span-1 overflow-hidden rounded-2xl">
-            <Image
-              src="/Images/facial.jpeg"
-              alt="facial"
-              fill
-              className="object-cover object-center"
-            />
-          </div>
-
-          <div className="relative row-span-2 overflow-hidden rounded-2xl">
-            <Image
-              src="/Images/Nail.jpeg"
-              alt="nails"
-              fill
-              className="object-cover object-center"
-            />
-          </div>
-
-          <div className="relative row-span-2 overflow-hidden rounded-2xl">
-            <Image
-              src="/Images/Wax.jpeg"
-              alt="waxing"
-              fill
-              className="object-cover object-center"
-            />
-          </div>
-        </div>
-
-        <div className="mt-4 flex flex-col items-center justify-center gap-3 px-4 text-center md:flex-row md:text-left">
-          <div
-            className={`${nunito.className} flex items-center gap-1 text-sm text-burgundy/90`}
-          >
-            <FaClock /> Open 7J/7 DE 10H00 - 20H00
-          </div>
-          <div
-            className={`${nunito.className} flex items-center gap-1 text-sm text-burgundy/90`}
-          >
-            <FaLocationArrow /> 8 Rue Dezobry - 93200 Saint-Denis
-          </div>
-        </div>
-
-        <div className="mb-2 mt-4 flex flex-col gap-2 px-4 sm:flex-row">
-          <a href="#booking">
-            <Button className={`${nunito.className} rounded-full bg-burgundy p-6`}>
-              Prendre rendez-vous
-            </Button>
-          </a>
-          <a href="#menu">
-            <Button
-              className={`${nunito.className} rounded-full border-2 border-burgundy bg-burgundy/10 p-6`}
-              variant="outline"
+          <div className="mt-4 flex w-full flex-col items-center justify-center gap-2 px-3 text-center sm:px-0 md:flex-row md:flex-wrap md:justify-center md:gap-3">
+            <div
+              className={`${nunito.className} flex items-center justify-center gap-1 text-sm text-burgundy/90`}
             >
-              Voir le menu des tarifs
-            </Button>
-          </a>
+              <FaClock />
+              <span>Open 7J/7 DE 10H00 - 20H00</span>
+            </div>
+
+            <div
+              className={`${nunito.className} flex items-center justify-center gap-1 text-sm text-burgundy/90`}
+            >
+              <FaLocationArrow />
+              <span>8 Rue Dezobry - 93200 Saint-Denis</span>
+            </div>
+          </div>
+
+          <div className="mb-2 mt-4 flex w-full flex-col items-center justify-center gap-3 px-3 sm:px-0 md:flex-row md:justify-center">
+            <a href="#booking" className="w-full sm:w-auto">
+              <Button
+                className={`${nunito.className} w-full rounded-full bg-burgundy px-6 py-6 sm:w-auto`}
+              >
+                Prendre rendez-vous
+              </Button>
+            </a>
+
+            <a href="#menu" className="w-full sm:w-auto">
+              <Button
+                className={`${nunito.className} w-full rounded-full border-2 border-burgundy bg-burgundy/10 px-6 py-6 sm:w-auto`}
+                variant="outline"
+              >
+                Voir le menu des tarifs
+              </Button>
+            </a>
+          </div>
         </div>
       </motion.div>
     </div>

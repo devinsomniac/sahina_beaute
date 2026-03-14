@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { playfair, nunito } from "@/app/font";
 import { Button } from "@/components/ui/button";
 
@@ -43,6 +43,16 @@ const Booking = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    if (!successMessage) return;
+
+    const timer = setTimeout(() => {
+      setSuccessMessage("");
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [successMessage]);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -79,7 +89,9 @@ const Booking = () => {
         throw new Error(result.message || "Échec de l'envoi de la réservation.");
       }
 
-      setSuccessMessage("Votre demande de rendez-vous a été envoyée avec succès.");
+      setSuccessMessage(
+        "Votre demande de rendez-vous a été envoyée avec succès."
+      );
       setFormData(initialFormData);
     } catch (error) {
       setErrorMessage(
@@ -119,6 +131,13 @@ const Booking = () => {
             Remplissez le formulaire ci-dessous et nous recevrons immédiatement
             votre demande de rendez-vous. Les visites sans rendez-vous sont
             également les bienvenues.
+          </p>
+
+          <p
+            className={`${nunito.className} mx-auto mt-4 max-w-2xl rounded-full border border-[#d9bb63]/30 bg-[#d9bb63]/10 px-5 py-3 text-sm leading-6 text-[#F8E7D8] md:text-base`}
+          >
+            Votre demande de rendez-vous a été reçue. Nous vous contacterons
+            pour confirmer l’horaire exact.
           </p>
         </div>
 
