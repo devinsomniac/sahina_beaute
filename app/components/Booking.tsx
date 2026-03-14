@@ -237,8 +237,7 @@ const Booking = () => {
                 onChange={handleChange}
                 min={new Date().toISOString().split("T")[0]}
                 required
-                className={`${nunito.className} h-12 w-full rounded-2xl border border-[#b55b78] bg-[#8d1b3f]/80 px-4 text-sm text-white outline-none transition focus:border-[#E8D5A0]`}
-              />
+                className={`${nunito.className} block h-12 w-full min-w-0 max-w-full appearance-none rounded-2xl border border-[#b55b78] bg-[#8d1b3f]/80 px-4 text-sm text-white outline-none transition focus:border-[#E8D5A0]`}              />
             </div>
 
             <div>
