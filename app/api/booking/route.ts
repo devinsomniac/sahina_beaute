@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     const customerName = `${firstName} ${lastName}`.trim();
 
     const ownerEmail = await resend.emails.send({
-      from: "Salon Booking <onboarding@resend.dev>",
+      from: "Sahina Beauté <contact@sahinabeaute.fr>",
       to: process.env.SALON_RECEIVER_EMAIL,
       subject: `New Booking Request from ${customerName}`,
       html: `
@@ -79,7 +79,7 @@ export async function POST(req: Request) {
     }
 
     const customerEmail = await resend.emails.send({
-      from: "Salon Booking <onboarding@resend.dev>",
+      from: "Sahina Beauté <contact@sahinabeaute.fr>",
       to: email,
       subject: "We received your booking request",
       html: `
