@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { sql } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 type ReviewRow = {
   id: number;
   name: string;
@@ -11,16 +14,15 @@ type ReviewRow = {
 
 export async function GET() {
   try {
-    const reviews = await sql`
+    const reviews = (await sql`
       SELECT id, name, role, quote, created_at
       FROM reviews
       WHERE approved = TRUE
       ORDER BY created_at DESC
       LIMIT 6
-    ` as ReviewRow[];
+    `) as ReviewRow[];
 
     return NextResponse.json(reviews, { status: 200 });
-
   } catch (error) {
     console.error("GET /api/reviews error:", error);
 
@@ -67,16 +69,19 @@ export async function POST(req: Request) {
       );
     }
 
-    await sql`
+    const inserted = (await sql`
       INSERT INTO reviews (name, role, quote, approved)
       VALUES (${name}, ${role}, ${quote}, TRUE)
-    `;
+      RETURNING id, name, role, quote, created_at
+    `) as ReviewRow[];
 
     return NextResponse.json(
-      { message: "Review submitted successfully." },
+      {
+        message: "Review submitted successfully.",
+        review: inserted[0],
+      },
       { status: 201 }
     );
-
   } catch (error) {
     console.error("POST /api/reviews error:", error);
 

@@ -13,25 +13,25 @@ type Review = {
 
 const fallbackReviews: Review[] = [
   {
-    id: 1,
+    id: 101,
     name: "Fatima R.",
     role: "Cliente mariée",
     quote:
-      "Le henné de mariée était absolument magnifique. L’artiste était très talentueuse et patiente. J’ai reçu énormément de compliments pendant mon événement.",
+      "Le henné de mariée était absolument magnifique. L’artiste était très talentueuse et patiente.",
   },
   {
-    id: 2,
+    id: 102,
     name: "Priya S.",
     role: "Cliente régulière",
     quote:
-      "J’adore ce salon. Le massage ayurvédique était profondément relaxant et l’équipe était très chaleureuse et accueillante. C’est devenu l’un de mes endroits préférés.",
+      "J’adore ce salon. L’équipe est chaleureuse, accueillante et toujours professionnelle.",
   },
   {
-    id: 3,
+    id: 103,
     name: "Amina K.",
     role: "Avis vérifié",
     quote:
-      "Des prix excellents pour une qualité incroyable. Mes ongles en gel ont tenu pendant des semaines et l’épilation au fil était parfaite. Je me sens toujours très bien prise en charge ici.",
+      "Des prix excellents pour une qualité incroyable. Je me sens toujours très bien prise en charge ici.",
   },
 ];
 
@@ -44,26 +44,8 @@ const avatarGradients = [
   "from-[#dabd68] to-[#b48a2e]",
 ];
 
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 28 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" as const },
-  },
-};
-
 const Reviews = () => {
-  const [reviews, setReviews] = useState<Review[]>(fallbackReviews);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -105,6 +87,16 @@ const Reviews = () => {
     fetchReviews();
   }, []);
 
+  useEffect(() => {
+    if (!successMessage) return;
+
+    const timer = setTimeout(() => {
+      setSuccessMessage("");
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [successMessage]);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -114,6 +106,9 @@ const Reviews = () => {
       ...prev,
       [name]: value,
     }));
+
+    if (successMessage) setSuccessMessage("");
+    if (errorMessage) setErrorMessage("");
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -132,9 +127,22 @@ const Reviews = () => {
       });
 
       const data = await res.json();
+      console.log("POST response data:", data);
 
       if (!res.ok) {
         throw new Error(data.error || "Failed to submit review");
+      }
+
+      if (data.review) {
+        setReviews((prev) => {
+          const base =
+            prev.length === fallbackReviews.length &&
+            prev.every((item, index) => item.id === fallbackReviews[index]?.id)
+              ? []
+              : prev;
+
+          return [data.review, ...base].slice(0, 6);
+        });
       }
 
       setSuccessMessage("Merci ! Votre avis a été envoyé avec succès.");
@@ -152,6 +160,18 @@ const Reviews = () => {
       setSubmitting(false);
     }
   };
+
+  const safeReviews = reviews.filter(
+    (review) =>
+      review &&
+      typeof review.id === "number" &&
+      typeof review.name === "string" &&
+      typeof review.role === "string" &&
+      typeof review.quote === "string" &&
+      review.name.trim() &&
+      review.role.trim() &&
+      review.quote.trim()
+  );
 
   return (
     <section
@@ -181,27 +201,27 @@ const Reviews = () => {
           </h2>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.12 }}
-          className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
-        >
+        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
           {loading
-            ? Array.from({ length: 6 }).map((_, index) => (
+            ? Array.from({ length: 3 }).map((_, index) => (
                 <div
                   key={index}
-                  className="min-h-[220px] rounded-2xl bg-[#f4e7e9] px-6 py-6 animate-pulse"
+                  className="min-h-[220px] animate-pulse rounded-2xl bg-[#f4e7e9] px-6 py-6"
                 />
               ))
-            : reviews.map((review, index) => (
+            : safeReviews.map((review, index) => (
                 <motion.div
                   key={review.id}
-                  variants={cardVariants}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.08,
+                    ease: "easeOut",
+                  }}
                   className="min-h-[220px] rounded-2xl bg-[#f4e7e9] px-6 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                 >
-
                   <p
                     className={`${playfair.className} text-[15px] leading-6 italic text-[#6B0F2B]`}
                   >
@@ -216,8 +236,10 @@ const Reviews = () => {
                     >
                       {review.name
                         .split(" ")
+                        .filter(Boolean)
                         .map((part) => part[0])
-                        .join("")}
+                        .join("")
+                        .slice(0, 2)}
                     </div>
 
                     <div>
@@ -231,7 +253,7 @@ const Reviews = () => {
                   </div>
                 </motion.div>
               ))}
-        </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 35 }}
