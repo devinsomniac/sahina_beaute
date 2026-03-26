@@ -20,7 +20,7 @@ const pricingData = {
       items: [
         { name: "Vernis simple / semi-permanent", price: "10 € / 20 €" },
         { name: "French / French semi-permanent", price: "15 € / 25 €" },
-        { name: "Beauté des pieds (basique)", price: "28 €" },
+        { name: "Beauté des pieds (basique)", price: "25 €" },
         { name: "Beauté des pieds + vernis simple", price: "30 €" },
         { name: "Beauté des pieds + French", price: "35 €" },
         { name: "Beauté des pieds + vernis semi-permanent", price: "40 €" },
